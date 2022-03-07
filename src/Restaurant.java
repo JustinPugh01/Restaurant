@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
-public class Resturant {
+public class Restaurant {
     private String name;
     private String imageurl;
     private ArrayList<Menu> menulist = new ArrayList();
 
-    public Resturant(String name) {
+    public Restaurant(String name) {
         this.name = name;
     }
 
