@@ -13,7 +13,7 @@ public class Menu {
     public String getMenuName() {
         return this.menuname;
     }
-
+    
     public void addItem(Item item) {
         itemlist.add(item);
     }
