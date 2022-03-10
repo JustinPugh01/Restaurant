@@ -1,4 +1,5 @@
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -8,11 +9,20 @@ public class Restaurant {
     private String name;
     private String imageURL;
     private ArrayList<Menu> menulist = new ArrayList();
+    public static ArrayList<Restaurant> RestaurantList = new ArrayList();
 
     public static void init(){
         try{
         Statement createTable = DB.conn.createStatement();
         createTable.execute("CREATE TABLE IF NOT EXISTS restaurants (ID INTEGER PRIMARY KEY, NAME TEXT , IMAGEURL TEXT);"); 
+        Statement getrestaurants = DB.conn.createStatement();
+        ResultSet restaurants = getrestaurants.executeQuery("SELECT * FROM restaurants");
+        while(restaurants.next()){
+            int id = restaurants.getInt(1);
+            String name = restaurants.getString(2);
+            String imageURL = restaurants.getString(3);
+            new Restaurant(id, name, imageURL);
+        }
     } catch(SQLException err){} }
 
  
@@ -27,8 +37,16 @@ public class Restaurant {
         insertrestaurants.setString(2, this.imageURL);
         insertrestaurants.executeUpdate();
         this.id = insertrestaurants.getGeneratedKeys().getInt(1);
+        RestaurantList.add(this);
         }catch (SQLException err){}
     }
+    public Restaurant(int id, String name , String imageurl){
+        this.id = id;
+        this.name = name;
+        this.imageURL = imageURL;
+        Restaurant.RestaurantList.add(this);
+    }
+
 
     public String getName() {
         return this.name;
