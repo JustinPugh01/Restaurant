@@ -1,4 +1,4 @@
-// Java unit tests done to create the unitl Restaurant class 
+// Java unit tests done to create the Restaurant class 
 
 /*import static org.junit.Assert.assertEquals;
 

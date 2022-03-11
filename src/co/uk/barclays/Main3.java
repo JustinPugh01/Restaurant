@@ -1,3 +1,4 @@
+package co.uk.barclays;
 
 import java.sql.PreparedStatement;
 
@@ -26,8 +27,7 @@ public class Main3 {
       // Creating restaurant objects in java by reading data from database 
 
       new DB("jdbc:sqlite:./db.sql/sql.db");
-      Restaurant.init();
-      DB.conn.close();
+    
 
 
 

@@ -1,3 +1,4 @@
+package co.uk.barclays;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -10,7 +11,6 @@ public class DB {
         try {
             DB.conn = DriverManager.getConnection(connectionString);
             Statement createTables = DB.conn.createStatement();
-            createTables.execute("CREATE TABLE IF NOT EXISTS restaurants (id INTEGER PRIMARY KEY, name TEXT);");
         } catch (SQLException error) {
             System.out.println(error.getMessage());
         }

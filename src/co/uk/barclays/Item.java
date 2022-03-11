@@ -1,3 +1,4 @@
+package co.uk.barclays;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,7 +18,7 @@ public class Item {
         createTable.execute("CREATE TABLE IF NOT EXISTS Dishes (ID INTEGER PRIMARY KEY, Menu_ID INTEGER , DishName TEXT , DishPrice INTEGER)"); 
     } catch(SQLException err){} }
 
-
+    // Uses preametors from user to create new Restaurant in database
     public Item(int Menu_ID, String dishname, double dishprice) {
         this.dishname = dishname;
         this.dishprice = dishprice ; 
