@@ -9,12 +9,12 @@ public class Restaurant {
     private String name;
     private String imageURL;
     private ArrayList<Menu> menulist = new ArrayList();
-    public static ArrayList<Restaurant> RestaurantList = new ArrayList();
+    public static ArrayList<Restaurant> allRestaurants = new ArrayList();
 
     public static void init(){
         try{
         Statement createTable = DB.conn.createStatement();
-        createTable.execute("CREATE TABLE IF NOT EXISTS restaurants (ID INTEGER PRIMARY KEY, NAME TEXT , IMAGEURL TEXT);"); 
+        createTable.execute("CREATE TABLE IF NOT EXISTS restaurants (ID INTEGER PRIMARY KEY, NAME TEXT , ImageURL TEXT);"); 
         Statement getrestaurants = DB.conn.createStatement();
         ResultSet restaurants = getrestaurants.executeQuery("SELECT * FROM restaurants");
         while(restaurants.next()){
@@ -37,14 +37,15 @@ public class Restaurant {
         insertrestaurants.setString(2, this.imageURL);
         insertrestaurants.executeUpdate();
         this.id = insertrestaurants.getGeneratedKeys().getInt(1);
-        RestaurantList.add(this);
+        allRestaurants.add(this);
         }catch (SQLException err){}
     }
-    public Restaurant(int id, String name , String imageurl){
+    public Restaurant(int id, String name , String imageURL){
         this.id = id;
         this.name = name;
         this.imageURL = imageURL;
-        Restaurant.RestaurantList.add(this);
+
+        Restaurant.allRestaurants.add(this);
     }
 
 

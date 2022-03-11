@@ -9,6 +9,8 @@ public class Item {
     double dishprice;
     int Menu_ID;
 
+    // Creates a table if there isnt one created with the name menu already
+
     public static void init(){
         try{
         Statement createTable = DB.conn.createStatement();
